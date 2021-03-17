@@ -13,7 +13,8 @@ import { VatAddedPipe } from './pipe/vat-added.pipe';
 import { FilterPipePipe } from './pipe/filter-pipe.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { AsdPipe } from './pipe/asd.pipe'
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { AsdPipe } from './pipe/asd.pipe'
     TodoComponent,
     VatAddedPipe,
     FilterPipePipe,
-    AsdPipe,
+    CartSummaryComponent,
   ],
   imports: [
     BrowserModule,
