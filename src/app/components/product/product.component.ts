@@ -11,6 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductComponent implements OnInit {
   products: Product[] = [];
   dataLoaded = false;
+  filtertext = '';
 
   constructor(
     private productService: ProductService,
@@ -19,8 +20,8 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      if (params["categoryId"]) {
-        this.getProductsByCategory(params["categoryId"])
+      if (params['categoryId']) {
+        this.getProductsByCategory(params['categoryId']);
       } else {
         this.getProducts();
       }
@@ -35,7 +36,9 @@ export class ProductComponent implements OnInit {
   }
 
   getProductsByCategory(categoryId: number) {
-    this.productService.getProductsByCategory(categoryId).subscribe((response) => {
+    this.productService
+      .getProductsByCategory(categoryId)
+      .subscribe((response) => {
         this.products = response.data;
         this.dataLoaded = true;
       });
