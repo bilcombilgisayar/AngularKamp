@@ -29,13 +29,21 @@
     <th>Fiyatı</th>
     <th>KDV'li Fiyatı</th>
     <th>Adet</th>
+    <th></th>
   </thead>
-  <tr *ngFor="let product of products">
-    <td>{{ product.productId }}</td>
-    <td>{{ product.productName | uppercase }}</td>
-    <td>{{ product.categoryId }}</td>
-    <td>{{ product.unitPrice | currency }}</td>
-    <td>{{ product.unitPrice | vatAdded: 10 | currency }}</td>
-    <td>{{ product.unitsInStock }}</td>
-  </tr>
+  <tbody>
+    <tr *ngFor="let product of products | filterPipe: filtertext">
+      <td>{{ product.productId }}</td>
+      <td>{{ product.productName | uppercase }}</td>
+      <td>{{ product.categoryId }}</td>
+      <td>{{ product.unitPrice | currency }}</td>
+      <td>{{ product.unitPrice | vatAdded: 18 | currency }}</td>
+      <td>{{ product.unitsInStock }}</td>
+      <td>
+        <button (click)="addToCart(product)" type="button" class="btn btn-success">
+          Sepete Ekle
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>
